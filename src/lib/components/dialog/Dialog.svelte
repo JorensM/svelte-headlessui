@@ -254,7 +254,9 @@
 
   function handleClick(e: CustomEvent) {
     let event = e as any as MouseEvent;
-    event.stopPropagation();
+    if(e.target.tagName != 'A') {
+        event.stopPropagation();
+    }
   }
 
   $: propsWeControl = {
