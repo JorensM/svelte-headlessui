@@ -254,7 +254,13 @@
 
   function handleClick(e: CustomEvent) {
     let event = e as any as MouseEvent;
-    event.stopPropagation();
+    /* Can't stop propogation for <a/> elements
+    because they rely on a native Svelte event handler 
+    to work properly */
+    if (e.target.tagName != "A") {
+      event.stopPropagation();
+    }
+    
   }
 
   $: propsWeControl = {
